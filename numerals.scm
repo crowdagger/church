@@ -1,3 +1,5 @@
+(use-modules (ice-9 format))
+
 ;; Booleans
 (define _true
   (lambda (x)
@@ -138,6 +140,25 @@
   (((op a b) f) '())
   (newline))
 
+
 (show two four add "🐱" " + ")
 (show three four mul "🐶" " X ")
 (show two three pow "🐮" " ^ ")
+
+
+
+(define (compare a b emoji)
+  (define (f _)
+    (display emoji))
+  ((a f) "")
+  (display " = ")
+  ((b f) "")
+  (display "? ")
+  (define result 
+    (_if (_eq? a b)
+         "✅"
+         "❌"))
+  (format #t "~a\n" result))
+
+(compare two three "🐻")
+(compare four (add two two) "🐹")
