@@ -35,7 +35,11 @@
 
 (define (mul a b)
   (lambda (f)
-    ((a b) f)))
+    (b (a f))))
+
+(define (pow a b)
+  (lambda (f)
+    ((b a) f)))
 
 ;; Copy/pasted from https://gist.github.com/nicky-zs/8296596 
 (define (pred   n)
@@ -124,15 +128,16 @@
 (display b)
 (newline)
 
+(define (show a b op emoji op-sym)
+  (define (f _)
+    (display emoji))
+  ((a f) '())
+  (display op-sym)
+  ((b f) '())
+  (display " = ")
+  (((op a b) f) '())
+  (newline))
 
-
-(define five (add two three))
-(define _nil '())
-(define (f _)
-  (display "🐱"))
-((two f) _nil)
-(display " + ")
-((three f) _nil)
-(display " = ")
-((five f) _nil)
-(newline)
+(show two four add "🐱" " + ")
+(show three four mul "🐶" " X ")
+(show two three pow "🐮" " ^ ")
