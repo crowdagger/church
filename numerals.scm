@@ -125,21 +125,14 @@
 (newline)
 
 
-;; (display four)
-;; (newline)
 
-;; (display (add one one))
-
-;; (newline)
-
-;; (display ((add one one) inc 0))
-;; (newline)
-
-;; (display (four inc 0))
-;; (newline)
-;; ; (display (= (add one one) two)) 
-
-;; (newline)
-
-;; (display (if0 zero "Toto" "Faux"))
-;; (display (if0 one "Vrai" "Faux"))
+(define five (add two three))
+(define _nil '())
+(define (f _)
+  (display "🐱"))
+((two f) _nil)
+(display " + ")
+((three f) _nil)
+(display " = ")
+((five f) _nil)
+(newline)
